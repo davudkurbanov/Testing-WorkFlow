@@ -27,4 +27,4 @@ jobs:
         dotnet-version: '3.1.100' #SDK Version to use
       
     - name: Try to build 
-      run: dotnet run <.\WBA.PE2.KurbanovD.Web\>
+      run: dotnet run --project .\WBA.PE2.KurbanovD.Web\
