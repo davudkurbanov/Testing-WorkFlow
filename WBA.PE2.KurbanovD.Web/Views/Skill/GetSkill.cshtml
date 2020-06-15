@@ -1,0 +1,32 @@
+﻿@model SkillGetSkillViewModel
+@{
+    ViewData["Title"] = "GetSkill";
+}
+
+<h2>Skill : @Model.Skill.Name</h2>
+
+<div class="row">
+    @if (Model.Skill.Skillsort == SkillSort.Active)
+    {
+        <partial name="ActiveSkillPartial" model="Model.Skill" />
+    }
+    else
+    {
+        <partial name="PassiveSkillPartial" model="Model.Skill" />
+    }
+</div>
+<h2 class="blackAndWhite text-center">Heroes With This Skill</h2>
+<div class="row">
+    @if(Model.HeroesWithSkill.Count == 0)
+    {
+        <b>No heroes were found!</b>
+    }
+    else
+    {
+        @foreach (var hero in Model.HeroesWithSkill)
+        {
+            <partial name="HeroCardPartial" model="hero" />
+        }
+    }
+</div>
+

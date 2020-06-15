@@ -1,0 +1,29 @@
+﻿@model SkillsGetSkillsByStatsViewModel
+@{
+    ViewData["Title"] = "GetSkillsByStats";
+}
+
+<h2>Here Is Your Result For Skill @Model.SearchStat and @Model.SearchValue Value!</h2>
+
+@if (Model.Skills.Count != 0)
+{ 
+<div class="row">
+    @foreach (Skill skill in Model.Skills)
+    {
+        if (skill is ActiveSkill)
+        { 
+            <partial name="ActiveSkillPartial" model="skill"/>
+        }
+        else
+        { 
+            <partial name="PassiveSkillPartial" model="skill" />
+        }
+    }
+</div>
+}
+else
+{
+    <h2>Coulnd't find any skills those matches the patron <i>@Model.SearchStat</i> for <i>@Model.SearchValue</i> value :(</h2>
+    <a asp-action="GetAllSkills" asp-controller="Skill" class="btn btn-info">Go To Skill Overview</a>
+}
+

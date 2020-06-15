@@ -1,0 +1,23 @@
+﻿@model PassiveSkill
+
+<div class="col-auto skill">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2"><a asp-action="GetSkill" asp-controller="Skill" asp-route-id="@Model.Id"\
+                                   ><b>@Model.Name</b></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="width:150px"><img src="~/images/Skills/@Model.Img" /></td>
+                <td>
+                    Skill type: <br />
+                                <b>@Model.Skillsort</b>
+                </td>
+            </tr>
+        </tbody>
+        <partial name="TfootEffectDetailsPartial" model="@Model.Effects" />
+
+    </table>
+</div>

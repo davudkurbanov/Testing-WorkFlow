@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WBA.PE2.KurbanovD.Web</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" asp-action="Index" asp-controller="CardGame">Hero Cards!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="GetAllHeroes" asp-controller="Heroes">Heroes <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetAllSkills" asp-controller="Skill">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetAllRaces" asp-controller="Race">Races</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="GetAllClasses" asp-controller="Class">Classes</a>
+                </li>
+
+            </ul>
+            <div class="dropdown ">
+                <input type="submit" data-toggle="dropdown" aria-haspopup="true" class="btn btn-light dropdown-toggle" value="Search" />
+                <div class="dropdown-menu search">
+                    <ul>
+                        <li>
+                            <a asp-action="Index" asp-controller="Search" class="btn btn-info">Main Search</a>
+                        </li>
+                        <li>
+                            <a asp-action="HeroSearch" asp-controller="Search" class="btn btn-info">Heroes</a>
+                        </li>
+                        <li>
+                            <a asp-action="SkillSearch" asp-controller="Search" class="btn btn-info">Skills</a>
+                        </li>
+                        <li>
+                            <a asp-action="RaceSearch" asp-controller="Search" class="btn btn-info">Races</a>
+                        </li>
+                        <li>
+                            <a asp-action="ClassSearch" asp-controller="Search" class="btn btn-info">Classes</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <partial name="RegisterLoginPartial" />
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        <partial name="NotificationMessagePartial" />
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2020 - WBA.PE2.KurbanovD.Web</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>What do you wish to search?</h2>
+<div class="search">
+    <a asp-action="HeroSearch" class="btn btn-info">Search for Heroes</a> <br />
+    <a asp-action="SkillSearch" class="btn btn-info">Search for Skills</a> <br />
+    <a asp-action="RaceSearch" class="btn btn-info">Search for a Race</a> <br />
+    <a asp-action="ClassSearch" class="btn btn-info">Search for a Hero Class</a>
+</div>
+<h2>Maybe this could be interesting?</h2>
+<div class="description search">
+    <ul>
+        <li>
+            <a asp-action="GetHeroByStats" asp-controller="Heroes" asp-route-heroStat="Health" asp-route-value="500"
+               asp-route-statAmountType="Above" class="btn btn-info">Get Heroes with 500 or more Health</a>
+        </li>
+        <li>
+            <a asp-action="GetHeroByStats" asp-controller="Heroes" asp-route-heroStat="Mana" asp-route-value="5"
+               asp-route-statAmountType="Below" class="btn btn-info">Get Heroes with Mana 5 or Below</a>
+        </li>
+        <li>
+            <a asp-action="GetHeroByStats" asp-controller="Heroes" asp-route-heroStat="Name" asp-route-value="Shadow"
+               asp-route-statAmountType="Contains" class="btn btn-info">Get Heroes by Name Contains "Shadow"</a>
+        </li>
+        <li>
+            <a asp-action="GetSkillsByStats" asp-controller="Skill" asp-route-skillStat="Name" asp-route-value="bolt"
+               class="btn btn-info">Get Skills by Name Contains "bolt"</a>
+        </li>
+        <li>
+            <a asp-action="GetSkillsByStats" asp-controller="Skill" asp-route-skillStat="Type" asp-route-value="Active"
+               class="btn btn-info">Get Skillzs by Type Contains "Active"</a>
+        </li>
+        <li>
+            <a asp-action="GetRace" asp-controller="Race"  asp-route-heroRace="beast"
+               class="btn btn-info">Get Those by Contain "beast"</a>
+        </li>
+        <li>
+            <a asp-action="GetClass" asp-controller="Class" asp-route-heroClass="Warlock" 
+               class="btn btn-info">Get Classes Those Contain "Warlock"</a>
+        </li>
+
+    </ul>
+</div>

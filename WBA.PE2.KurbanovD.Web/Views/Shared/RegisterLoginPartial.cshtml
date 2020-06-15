@@ -1,0 +1,64 @@
+﻿
+@{
+    var usersLoginViewModel = new UsersLoginViewModel();
+    @*var authenticationToken = Context.Session.GetString("AuthenticationToken");
+            string userName;
+            if (authenticationToken != null)
+            {
+                userName = (new CardGameService()).GetUserNameByAuthenticationToken(authenticationToken))
+            }
+
+        }*@
+    var userName = Context.Session.GetString("UserName");
+var authenticationToken = Context.Session.GetString("AuthenticationToken");
+}
+
+@if (userName == null)
+{
+    @*<li>
+            <div class="dropdown">
+                <button data-toggle="dropdown" aria-haspopup="true" class="btn btn-light dropdown-toggle">Login Or SignUp</button>
+                <input type="submit" data-toggle="dropdown" aria-haspopup="true" class="btn btn-light dropdown-toggle" value="Login Or Register New User" />
+                <div class="dropdown-menu">
+                    <p class="text-center"><b>Have already an acount?</b></p>
+                    <form class="form-group" asp-action="Login" asp-controller="Users" asp-route-viewModel="@usersLoginViewModel">
+                        <div class="form-group">
+                            <label asp-for="@usersLoginViewModel.UserName"></label>
+                            <input required class="form-control" for="@usersLoginViewModel.UserName" />
+                            <span class="text-danger" asp-validation-for="@usersLoginViewModel.UserName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@usersLoginViewModel.Password"></label>
+                            <input required type="password" class="form-control" asp-for="@usersLoginViewModel.Password" />
+                            <span class="text-danger" asp-validation-for="@usersLoginViewModel.Password"></span>
+                        </div>
+                        <input type="submit" class="btn btn-light" value="Login" />
+                        <p class="text-center"><b>Are you new here?</b></p>
+                        <a asp-action="Register" asp-controller="Users" class="btn btn-light">Register</a>
+                    </form>
+                </div>
+            </div>
+        </li>*@
+    <div class="dropdown ">
+        <input type="submit" data-toggle="dropdown" aria-haspopup="true" class="btn btn-light dropdown-toggle" value="Login Or Register New User" />
+        <div class="dropdown-menu registerLogin">
+            <p ><b>Have already an account?</b></p>
+            <a asp-action="Login" class="btn btn-light" asp-controller="Users">Login</a>
+            <p ><b>Are you new here?</b></p>
+            <a asp-action="Register" asp-controller="Users" class="btn btn-light">Register</a>
+        </div>
+    </div>
+
+}
+else
+{
+<div class="dropdown ">
+    <input type="submit" data-toggle="dropdown" aria-haspopup="true" class="btn btn-light dropdown-toggle" value="@userName" />
+    <div class="dropdown-menu registerLogin">
+        <a asp-action="UserDetails" class="btn btn-light" asp-controller="Users" 
+           asp-route-authenticationToken="@authenticationToken">My Profile</a>
+        <a asp-action="LogOut" asp-controller="Users" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+}
+

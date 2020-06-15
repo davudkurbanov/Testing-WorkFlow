@@ -1,0 +1,27 @@
+﻿@model SearchHeroViewModel
+@{
+    ViewData["Title"] = "HeroSearch";
+}
+
+<h2>HeroSearch</h2>
+
+<div class="row">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="HeroStat"></label>
+            <select class="form-control" asp-for="HeroStat" asp-items="Model.HeroStats"></select>
+            <span class="text-danger" asp-validation-for="HeroStat"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SearchValue"></label>
+            <input class="form-control" asp-for="SearchValue"/>
+            <span class="text-danger" asp-validation-for="SearchValue"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ValueType"></label>
+            <select asp-for="ValueType" asp-items="Model.ValueTypes"></select>
+        </div>
+        <input type="submit" class="btn btn-info" value="Search" />
+    </form>
+</div>
+<partial name="_ValidationScriptsPartial" />

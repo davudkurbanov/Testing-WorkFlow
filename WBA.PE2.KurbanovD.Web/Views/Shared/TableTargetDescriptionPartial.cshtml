@@ -1,0 +1,54 @@
+﻿@model SkillEffects
+
+    @*@if (Model.Skills.Count == 1)
+    {*@
+        <tr>
+            <th class="blackAndWhite text-center" colspan="3">Target(s) (@Model.Effect.EffectType)</th>
+        </tr>
+        @*//}*@
+    @*else
+    {
+        <tr>
+            <th class="blackAndWhite text-center" colspan="3">Target(s) (@Model.EffectType)</th>
+        </tr>
+    }*@
+    @if (Model.Target is MultipleTarget)
+    {
+        var multipleTarget = (MultipleTarget)Model.Target;
+        <tr>
+            <th>Type </th>
+            <td> @multipleTarget.TargetType units</td>
+        </tr>
+        <tr>
+            <th>Hero Type</th>
+            <td>@multipleTarget.HeroTargetType units</td>
+        </tr>
+
+        <tr>
+            <th>Amount </th>
+            <td>@multipleTarget.AmountOfTargets</td>
+        </tr>
+        <tr>
+            <th>AOE </th>
+            <td>@multipleTarget.AreaOfEffect</td>
+        </tr>
+    }
+    else if (Model.Target is SingleTarget)
+    {
+        var singleTarget = (SingleTarget)Model.Target;
+        if (singleTarget.HeroTargetType == HeroTargetType.Self)
+        {
+            <tr>
+                <th>Type</th>
+                <td>@singleTarget.HeroTargetType target</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th>Type</th>
+                <td>@singleTarget.TargetType @singleTarget.HeroTargetType unit</td>
+            </tr>
+        }
+
+    }

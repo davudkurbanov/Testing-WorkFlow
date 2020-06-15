@@ -1,0 +1,32 @@
+﻿@model UsersDetailsViewModel
+@{
+    ViewData["Title"] = "UserDetails";
+}
+
+<h2>Hello @Model.UserName!</h2>
+
+<h2 class="blackAndWhite">User overview</h2>
+<div class="description">
+    <p>Username :<b>@Model.UserName</b></p>
+    <p>First Name : <b>@Model.FirstName</b></p>
+    <p>Last Name : <b>@Model.LastName</b></p>
+    <p>Role : <b>@Model.Role</b></p>
+</div>
+<h2 class="blackAndWhite">My favorite Heroes ♥</h2>
+<div class="row">
+    @if (Model.HeroCards.Count == 0)
+    {
+        <h2>
+            You have no favorite heroes yet! <a class="btn btn-success" asp-action="GetAllHeroes" asp-controller="Heroes">
+                Go Get Them!
+            </a>
+        </h2>
+    }
+    else
+    {
+        @foreach (var userHeroCard in Model.HeroCards)
+        {
+            <partial name="HeroCardPartial" model="userHeroCard.Hero" />
+        }
+    }
+</div>
